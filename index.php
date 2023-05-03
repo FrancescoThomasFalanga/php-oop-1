@@ -1,39 +1,8 @@
 <?php
 
-class Movie {
-    public $film;
-    public $genre;
-    public $releaseDate;
-    public $director;
-    public $distribution;
-    public $cast;
-    public $averageVote;
+require_once "./Models/Movie.php";
 
-    function __construct(string $film, string $genre, string $releaseDate, string $director, string $distribution, string $cast, int $averageVote) {
-
-        $this->film = $film;
-        $this->genre = $genre;
-        $this->releaseDate = $releaseDate;
-        $this->director = $director;
-        $this->distribution = $distribution;
-        $this->cast = $cast;
-        $this->averageVote = $averageVote;
-
-    }
-
-    public function getAverageVote() {
-        return $this->averageVote / 2;
-    }
-}
-
-$shazam = new Movie("Shazam! Furia degli Dei", "Azione", "17-03-2023", "David F. Sandberg", "Warner Bros. Pictures", "Zachary Levi, Asher Angel", 7);
-$tetris = new Movie("Tetris", "Biografico", "15-03-2023", "Jon S. Baird", "Apple TV+", "Taron Egerton, Toby Jones", 6);
-$creed = new Movie("Creed III", "Drammatico", "02-03-2023", "Michael B. Jordan", "Warner Bros. Pictures", "Michael B. Jordan, Tessa Thompson", 10);
-$magicMike = new Movie("Magic Mike - The Last Dance", "Commedia", "10-02-2023", "Steven Soderbergh", "Warner Bros. Pictures", "Channing Tatum, Salma Hayek", 9);
-
-$movies = [
-    $creed, $tetris, $shazam, $magicMike
-];
+require_once "./Models/db.php";
 
 ?>
 
@@ -50,10 +19,14 @@ $movies = [
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
 <body>
+
+    <?php
+    require_once "./partials/header.php";
+    ?>
     
     <h1>Movies</h1>
 
-    <div style="max-width:1600px; margin:0 auto;">
+    <div style="max-width:1600px; margin:200px auto;">
 
         <table class="table">
 
@@ -76,7 +49,7 @@ $movies = [
                         ?>
                         <tr>
                             <td><?php echo $singleMovie->film ?></td>
-                            <td><?php echo $singleMovie->genre ?></td>
+                            <td><?php foreach ($singleMovie->genre as $genr) { echo $genr, ", ";} ?></td>
                             <td><?php echo $singleMovie->releaseDate ?></td>
                             <td><?php echo $singleMovie->director ?></td>
                             <td><?php echo $singleMovie->distribution ?></td>
@@ -92,6 +65,10 @@ $movies = [
         </table>
 
     </div>
+
+    <?php
+    require_once "./partials/footer.php";
+    ?>
 
 </body>
 </html>
