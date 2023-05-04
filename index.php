@@ -1,6 +1,7 @@
 <?php
 
 require_once "./Models/Movie.php";
+require_once "./Models/Cast.php";
 
 require_once "./Models/db.php";
 
@@ -53,7 +54,7 @@ require_once "./Models/db.php";
                             <td><?php echo $singleMovie->releaseDate ?></td>
                             <td><?php echo $singleMovie->director ?></td>
                             <td><?php echo $singleMovie->distribution ?></td>
-                            <td><?php echo $singleMovie->cast ?></td>
+                            <td><?php echo $singleMovie->cast->getActors() ?></td>
                             <td><?php echo $singleMovie->getAverageVote() ?>/5</td>
                         </tr>
                         <?php

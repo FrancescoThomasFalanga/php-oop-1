@@ -9,7 +9,7 @@ class Movie {
     public $cast;
     public $averageVote;
 
-    function __construct(string $film, array $genre, string $releaseDate, string $director, string $distribution, string $cast, int $averageVote) {
+    function __construct(string $film, array $genre, string $releaseDate, string $director, string $distribution, Cast $cast, int $averageVote) {
 
         $this->film = $film;
         $this->genre = $genre;
